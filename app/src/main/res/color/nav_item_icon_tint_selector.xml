@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Tinte del icono cuando el ítem está seleccionado/chequeado -->
+    <item android:color="@color/nav_item_icon_tint_selected" android:state_checked="true" />
+    <!-- Tinte del icono por defecto -->
+    <item android:color="@color/nav_item_icon_tint_default" />
+</selector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Color del texto cuando el ítem está seleccionado/chequeado -->
+    <item android:color="@color/nav_item_text_selected" android:state_checked="true" />
+    <!-- Color del texto por defecto -->
+    <item android:color="@color/nav_item_text_default" />
+</selector>
