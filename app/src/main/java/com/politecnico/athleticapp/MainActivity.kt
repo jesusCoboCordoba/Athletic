@@ -21,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.politecnico.athleticapp.databinding.ActivityMainBinding
 import com.politecnico.athleticapp.ui.menu.NavItem
 import com.politecnico.athleticapp.ui.menu.NavigationRVAdapter
+import androidx.navigation.NavOptions
 
 class MainActivity : AppCompatActivity() {
 
@@ -97,7 +98,13 @@ class MainActivity : AppCompatActivity() {
         navViewAdapter = NavigationRVAdapter(navItems) { selectedNavItem ->
             // Navegar al destino y cerrar el drawer
             if (navController.currentDestination?.id != selectedNavItem.id) {
-                navController.navigate(selectedNavItem.id)
+                val navOptions = NavOptions.Builder()
+                    .setEnterAnim(R.anim.custom_fade_in)
+                    .setExitAnim(R.anim.custom_fade_out)
+                    .setPopEnterAnim(R.anim.custom_fade_in)
+                    .setPopExitAnim(R.anim.custom_fade_out)
+                    .build()
+                navController.navigate(selectedNavItem.id, null, navOptions)
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             // La selección visual se actualiza mediante addOnDestinationChangedListener
@@ -117,5 +124,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun showLoading() {
+        binding.loadingOverlay.visibility = View.VISIBLE
+    }
+
+    fun hideLoading() {
+        binding.loadingOverlay.visibility = View.GONE
     }
 }

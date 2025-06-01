@@ -12,9 +12,6 @@
 | Chisaca Rubio    | Daniel         | [dchisaca@poligran.edu.co](mailto:dchisaca@poligran.edu.co)     |
 | Cuervo Barragan  | Maria Fernanda | [mfecuervo@poligran.edu.co](mailto:mfecuervo@poligran.edu.co)   |
 
-## 📅 Fecha
-
-(Agregar aquí la fecha de entrega o creación del proyecto)
 
 ## 🔗 Enlaces Importantes
 

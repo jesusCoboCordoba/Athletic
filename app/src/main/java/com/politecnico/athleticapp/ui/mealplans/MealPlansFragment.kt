@@ -26,7 +26,7 @@ class MealPlansFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.breakfastCard.setOnClickListener {
-            findNavController().navigate(R.id.nav_breakfast_detail)
+            findNavController().navigate(R.id.action_nav_meal_plans_to_nav_breakfast_detail)
         }
 
         // Aquí podrías añadir listeners para las otras tarjetas de comida (coffee_break_card, etc.)

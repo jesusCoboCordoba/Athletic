@@ -9,7 +9,15 @@
         android:id="@+id/nav_home_main"
         android:name="com.politecnico.athleticapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_main_to_nav_meal_plans"
+            app:destination="@id/nav_meal_plans"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -33,7 +41,15 @@
         android:id="@+id/nav_meal_plans"
         android:name="com.politecnico.athleticapp.ui.mealplans.MealPlansFragment"
         android:label="@string/menu_meal_plans"
-        tools:layout="@layout/fragment_meal_plans" />
+        tools:layout="@layout/fragment_meal_plans">
+        <action
+            android:id="@+id/action_nav_meal_plans_to_nav_breakfast_detail"
+            app:destination="@id/nav_breakfast_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_progress_tracking"
