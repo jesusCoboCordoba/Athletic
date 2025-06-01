@@ -15,4 +15,11 @@
     <color name="nav_item_text_default">#DE000000</color>     <!-- Negro (87% alpha) para texto por defecto -->
     <color name="nav_item_icon_tint_selected">#C62828</color> <!-- Un rojo oscuro para icono seleccionado -->
     <color name="nav_item_icon_tint_default">#8A000000</color>  <!-- Negro (54% alpha) para icono por defecto -->
+    <color name="nav_item_pressed_custom_color">#004D53</color> <!-- Nuevo color para hover/pressed -->
+    <color name="green_500">#4CAF50</color> <!-- Añadido para el título de Meal Plans -->
+    <color name="meal_card_background">#8C6DFF</color> <!-- Añadido para el fondo de la tarjeta de comida -->
+    <color name="coffee_break_card_background">#D2B48C</color> <!-- Tan -->
+    <color name="lunch_card_background">#FFA07A</color>      <!-- LightSalmon -->
+    <color name="dinner_card_background">#4682B4</color>       <!-- SteelBlue -->
+    <color name="snack_card_background">#FFFACD</color>        <!-- LemonChiffon -->
 </resources>

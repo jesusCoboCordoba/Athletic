@@ -16,13 +16,13 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"
-        app:itemBackground="@drawable/nav_item_background_selector"
-        app:itemTextColor="@color/nav_item_text_color_selector"
-        app:itemIconTint="@color/nav_item_icon_tint_selector" />
+        android:background="@android:color/white"
+        app:headerLayout="@layout/nav_header_main">
+        <!-- RecyclerView ha sido movido a nav_header_main.xml -->
+    </com.google.android.material.navigation.NavigationView>
+
 </androidx.drawerlayout.widget.DrawerLayout>

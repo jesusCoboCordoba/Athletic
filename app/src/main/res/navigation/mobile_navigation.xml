@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_home_main">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_home_main"
         android:name="com.politecnico.athleticapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
@@ -22,4 +22,35 @@
         android:name="com.politecnico.athleticapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_workouts"
+        android:name="com.politecnico.athleticapp.ui.workouts.WorkoutsFragment"
+        android:label="@string/menu_workouts"
+        tools:layout="@layout/fragment_workouts" />
+
+    <fragment
+        android:id="@+id/nav_meal_plans"
+        android:name="com.politecnico.athleticapp.ui.mealplans.MealPlansFragment"
+        android:label="@string/menu_meal_plans"
+        tools:layout="@layout/fragment_meal_plans" />
+
+    <fragment
+        android:id="@+id/nav_progress_tracking"
+        android:name="com.politecnico.athleticapp.ui.progresstracking.ProgressTrackingFragment"
+        android:label="@string/menu_progress_tracking"
+        tools:layout="@layout/fragment_progress_tracking" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.politecnico.athleticapp.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_breakfast_detail"
+        android:name="com.politecnico.athleticapp.ui.mealplans.BreakfastDetailFragment"
+        android:label="Breakfast Detail" 
+        tools:layout="@layout/fragment_breakfast_detail" />
+
 </navigation>

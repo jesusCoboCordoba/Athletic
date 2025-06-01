@@ -15,7 +15,8 @@
         android:paddingEnd="16dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:clipToPadding="false"> 
+        android:clipToPadding="false"
+        android:background="@android:color/white"> 
 
         <TextView
             android:id="@+id/user_name_greeting"
@@ -29,11 +30,14 @@
 
         <!-- Card 1: Your current workout -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_current_workout" 
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            android:layout_marginBottom="20dp" 
+            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="#6A5ACD">
 
             <RelativeLayout
@@ -76,11 +80,14 @@
 
         <!-- Card 2: Track your progress -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_track_progress" 
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            android:layout_marginBottom="20dp" 
+            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="#20B2AA">
 
             <RelativeLayout
@@ -123,11 +130,14 @@
 
         <!-- Card 3: Join the community -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_join_community" 
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            android:layout_marginBottom="20dp" 
+            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="#FF7F50">
 
             <RelativeLayout
@@ -170,11 +180,14 @@
 
         <!-- Card 4: Meal Plans -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_meal_plans" 
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            android:layout_marginBottom="20dp" 
+            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="#3CB371">
 
             <RelativeLayout
