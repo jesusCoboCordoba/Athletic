@@ -21,6 +21,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:headerLayout="@layout/nav_header_main">
         <!-- RecyclerView ha sido movido a nav_header_main.xml -->
     </com.google.android.material.navigation.NavigationView>
