@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home_main">
+    app:startDestination="@id/nav_home_main">
 
     <fragment
         android:id="@+id/nav_home_main"
@@ -13,6 +13,13 @@
         <action
             android:id="@+id/action_nav_home_main_to_nav_meal_plans"
             app:destination="@id/nav_meal_plans"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_home_main_to_weeklyChallengeFragment"
+            app:destination="@id/weeklyChallengeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -66,7 +73,57 @@
     <fragment
         android:id="@+id/nav_breakfast_detail"
         android:name="com.politecnico.athleticapp.ui.mealplans.BreakfastDetailFragment"
-        android:label="Breakfast Detail" 
+        android:label="Breakfast Detail"
         tools:layout="@layout/fragment_breakfast_detail" />
+
+    <fragment
+        android:id="@+id/weeklyChallengeFragment"
+        android:name="com.politecnico.athleticapp.ui.weeklychallenge.WeeklyChallengeFragment"
+        android:label="Weekly Challenge"
+        tools:layout="@layout/fragment_weekly_challenge" >
+        <action
+            android:id="@+id/action_weeklyChallengeFragment_to_routineExercisesFragment"
+            app:destination="@id/routineExercisesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/routineExercisesFragment" 
+        android:name="com.politecnico.athleticapp.ui.weeklychallenge.RoutineExercisesFragment"
+        android:label="Routine Exercises"
+        tools:layout="@layout/fragment_routine_exercises">
+        <argument
+            android:name="routineTitle"
+            app:argType="string" />
+        <argument
+            android:name="imageResId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_routineExercisesFragment_to_exerciseDetailFragment"
+            app:destination="@id/exerciseDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/exerciseDetailFragment"
+        android:name="com.politecnico.athleticapp.ui.weeklychallenge.ExerciseDetailFragment" 
+        android:label="Exercise Detail"
+        tools:layout="@layout/fragment_exercise_detail"> 
+        <argument
+            android:name="exerciseName"
+            app:argType="string" />
+        <argument
+            android:name="exerciseDescription"
+            app:argType="string" />
+        <argument
+            android:name="exerciseImageResId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

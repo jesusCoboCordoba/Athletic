@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.politecnico.athleticapp.MainActivity
 import com.politecnico.athleticapp.databinding.FragmentBreakfastDetailBinding
 
 class BreakfastDetailFragment : Fragment() {
@@ -17,8 +18,15 @@ class BreakfastDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBreakfastDetailBinding.inflate(inflater, container, false)
-        // Aquí se configurarán las vistas si es necesario
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Aquí se configurarán las vistas si es necesario
+
+        // Ocultar el loading indicator
+        view.post { (activity as? MainActivity)?.hideLoading() }
     }
 
     override fun onDestroyView() {

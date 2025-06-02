@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -33,16 +35,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Modern way to handle edge-to-edge and status bar appearance
+        WindowCompat.setDecorFitsSystemWindows(window, false) // Enable edge-to-edge
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set status bar color and icons
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.statusBarColor = Color.WHITE
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = Color.WHITE
-        }
+        // Set status bar color and icons using modern API
+        window.statusBarColor = Color.TRANSPARENT // Or Color.WHITE if you don't want full transparency initially
+        val insetsController = WindowInsetsControllerCompat(window, binding.root)
+        insetsController.isAppearanceLightStatusBars = true // True for dark icons on light background
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
@@ -96,8 +98,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         navViewAdapter = NavigationRVAdapter(navItems) { selectedNavItem ->
-            // Navegar al destino y cerrar el drawer
             if (navController.currentDestination?.id != selectedNavItem.id) {
+                showLoading() // Asegurarse de llamar a showLoading de MainActivity
                 val navOptions = NavOptions.Builder()
                     .setEnterAnim(R.anim.custom_fade_in)
                     .setExitAnim(R.anim.custom_fade_out)
@@ -107,7 +109,6 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(selectedNavItem.id, null, navOptions)
             }
             drawerLayout.closeDrawer(GravityCompat.START)
-            // La selección visual se actualiza mediante addOnDestinationChangedListener
         }
         recyclerView.adapter = navViewAdapter
 
