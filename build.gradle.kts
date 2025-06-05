@@ -2,4 +2,6 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
+    // alias(libs.plugins.android.library) apply false // Commented out this line
+    id("androidx.navigation.safeargs.kotlin") version "2.7.7" apply false
 }

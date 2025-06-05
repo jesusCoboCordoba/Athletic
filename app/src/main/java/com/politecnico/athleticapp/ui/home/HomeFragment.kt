@@ -9,6 +9,8 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -27,22 +29,21 @@ class HomeFragment : Fragment() {
 
     private val defaultScale = 1.0f
     private val zoomedScale = 1.05f
-    private val animationDuration = 150L
+    private val cardAnimationDuration = 150L
+    private var initialContentAnimated = false
 
     private fun animateCard(card: View, actionToRunAfter: () -> Unit) {
         val scaleXAnimator = ObjectAnimator.ofFloat(card, View.SCALE_X, defaultScale, zoomedScale, defaultScale)
         val scaleYAnimator = ObjectAnimator.ofFloat(card, View.SCALE_Y, defaultScale, zoomedScale, defaultScale)
 
-        scaleXAnimator.duration = animationDuration * 2
-        scaleYAnimator.duration = animationDuration * 2
+        scaleXAnimator.duration = cardAnimationDuration * 2
+        scaleYAnimator.duration = cardAnimationDuration * 2
 
         var actionExecuted = false
         scaleXAnimator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
                 if (!actionExecuted) {
                     actionExecuted = true
-                    // Usar Handler para postear la acción asegura que se ejecuta después del ciclo de la animación
-                    // y en el hilo principal, especialmente si la acción involucra navegación.
                     Handler(Looper.getMainLooper()).post(actionToRunAfter)
                 }
             }
@@ -68,22 +69,13 @@ class HomeFragment : Fragment() {
         binding.cardMealPlans.setOnClickListener {
             (activity as? MainActivity)?.showLoading()
             animateCard(it) {
-                // No necesitas el postDelayed aquí si la navegación es rápida
-                // o si el loading indicator es suficiente.
-                // Si la navegación es a una pantalla que carga datos, el hideLoading() debería estar allí.
                 findNavController().navigate(R.id.action_nav_home_main_to_nav_meal_plans)
-                // Considera llamar a hideLoading() en el destino, por ejemplo en MealPlansFragment.onViewCreated
-                // o después de un retraso si es solo para simulación:
-                 Handler(Looper.getMainLooper()).postDelayed({ (activity as? MainActivity)?.hideLoading() }, 300) // Pequeño retraso para ver el loader
             }
         }
 
         binding.cardCurrentWorkout.setOnClickListener {
-            // (activity as? MainActivity)?.showLoading() // Ejemplo si se quisiera loading
             animateCard(it) {
-                // findNavController().navigate(R.id.alguna_accion_workout)
                 Toast.makeText(context, "Current Workout Tapped!", Toast.LENGTH_SHORT).show()
-                // (activity as? MainActivity)?.hideLoading() // Ejemplo
             }
         }
 
@@ -99,18 +91,74 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.cardWeeklyChallenge.setOnClickListener {
+            (activity as? MainActivity)?.showLoading()
+            animateCard(it) {
+                findNavController().navigate(R.id.action_nav_home_main_to_weeklyChallengeFragment)
+            }
+        }
+
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (!initialContentAnimated) {
+            prepareViewsForEntryAnimation()
+            animateFragmentContentIn()
+            initialContentAnimated = true
+        }
+        view.post { (activity as? MainActivity)?.hideLoading() }
+    }
 
-        // Es una buena práctica configurar listeners en onViewCreated
-        // si no dependen de vistas que se inflan directamente en onCreateView
-        // pero en este caso, como usamos ViewBinding, binding.cardMealPlans está disponible
-        // después de inflar el binding, por lo que onCreateView también es válido.
-        // Mantendremos el listener en onCreateView por simplicidad en este ejemplo,
-        // pero considera moverlo aquí si la lógica se vuelve más compleja.
+    private fun prepareViewsForEntryAnimation() {
+        if (_binding == null) return
+        binding.userNameGreeting.alpha = 0f
+        binding.cardCurrentWorkout.alpha = 0f
+        binding.cardTrackProgress.alpha = 0f
+        binding.cardJoinCommunity.alpha = 0f
+        binding.cardMealPlans.alpha = 0f
+        binding.cardWeeklyChallenge.alpha = 0f
+
+        binding.userNameGreeting.translationY = 30f
+        binding.cardCurrentWorkout.translationY = 30f
+        binding.cardTrackProgress.translationY = 30f
+        binding.cardJoinCommunity.translationY = 30f
+        binding.cardMealPlans.translationY = 30f
+        binding.cardWeeklyChallenge.translationY = 30f
+    }
+
+    private fun animateFragmentContentIn() {
+        if (_binding == null) return
+
+        val viewsToAnimate = listOf(
+            binding.userNameGreeting,
+            binding.cardCurrentWorkout,
+            binding.cardTrackProgress,
+            binding.cardJoinCommunity,
+            binding.cardMealPlans,
+            binding.cardWeeklyChallenge
+        )
+
+        var delay = 50L
+        val delayIncrement = 60L
+        val entryAnimationDuration = 350L
+
+        for (viewToAnimate in viewsToAnimate) {
+            viewToAnimate.postDelayed({
+                ObjectAnimator.ofFloat(viewToAnimate, View.ALPHA, 0f, 1f).apply {
+                    duration = entryAnimationDuration
+                    interpolator = DecelerateInterpolator()
+                    start()
+                }
+                ObjectAnimator.ofFloat(viewToAnimate, View.TRANSLATION_Y, 30f, 0f).apply {
+                    duration = entryAnimationDuration
+                    interpolator = DecelerateInterpolator()
+                    start()
+                }
+            }, delay)
+            delay += delayIncrement
+        }
     }
 
     override fun onDestroyView() {

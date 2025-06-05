@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.politecnico.athleticapp.MainActivity
 import com.politecnico.athleticapp.R
 import com.politecnico.athleticapp.databinding.FragmentMealPlansBinding
 
@@ -26,11 +27,14 @@ class MealPlansFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.breakfastCard.setOnClickListener {
+            (activity as? MainActivity)?.showLoading()
             findNavController().navigate(R.id.action_nav_meal_plans_to_nav_breakfast_detail)
         }
 
         // Aquí podrías añadir listeners para las otras tarjetas de comida (coffee_break_card, etc.)
         // si quieres que también naveguen a algún sitio.
+
+        view.post { (activity as? MainActivity)?.hideLoading() }
     }
 
     override fun onDestroyView() {
