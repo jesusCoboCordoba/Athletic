@@ -23,8 +23,7 @@ data class ExerciseItem(
     val name: String,
     val description: String, 
     val imageResId: Int,
-    val reps: String,      // e.g., "3 x 8-12 reps"
-    val restTime: String   // e.g., "Rest: 60s"
+    val reps: String      // e.g., "3 x 8-12 reps"
 )
 
 class RoutineExercisesFragment : Fragment() {
@@ -48,10 +47,10 @@ class RoutineExercisesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.routineExercisesTitle.text = args.routineTitle
-        if (args.imageResId != 0) {
-            binding.routineExercisesImage.setImageResource(args.imageResId)
-        }
+        // Extract a simpler subtitle from the full routine title
+        val fullTitle = args.routineTitle
+        val subtitle = fullTitle.substringAfter("–").substringBefore("(").trim()
+        binding.routineSubtitle.text = subtitle
 
         setupRecyclerView()
         loadExercisesForRoutine(args.routineTitle)
@@ -76,28 +75,26 @@ class RoutineExercisesFragment : Fragment() {
         // Placeholder logic with updated data
         val exercises = when (routineTitle) {
             getString(R.string.routine_a_title_full) -> listOf(
-                ExerciseItem("Machine squats or bodyweight squats", "Description for Squats", R.drawable.group_1, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Dumbbell or machine chest press", "Description for Chest Press", R.drawable.group_1, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Machine row or low pulley row", "Description for Row", R.drawable.group_1, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Dumbbell shoulder press", "Description for Shoulder Press", R.drawable.group_1, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Calf raises", "Description for Calf Raises", R.drawable.group_1, "3 x 15-20 reps", "Rest: 45s"),
-                ExerciseItem("Plank", "Description for Plank", R.drawable.group_1, "3 x 30-60s", "Rest: 30s")
+                ExerciseItem("Squats", "Description for Squats", R.drawable.weekly_2, "3 Sets x 12 Reps"),
+                ExerciseItem("Dumbbell Row", "Description for Dumbbell Row", R.drawable.fu, "3 Sets x 12 Reps"),
+                ExerciseItem("Lunge", "Description for Lunge", R.drawable.weekly_1, "3 Sets x 12 Reps"),
+                ExerciseItem("Push-ups", "Description for Push-ups", R.drawable.weekly_3, "3 Sets x 10 Reps")
             )
             getString(R.string.routine_b_title_full) -> listOf(
-                ExerciseItem("Machine or dumbbell chest press", "Description for Chest Press", R.drawable.group_2, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Lat pulldowns (high pulley)", "Description for Lat Pulldowns", R.drawable.group_2, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Barbell or dumbbell row (1 arm)", "Description for Row", R.drawable.group_2, "3 x 10-12 reps", "Rest: 60-90s"),
-                ExerciseItem("Dumbbell bicep curls", "Description for Bicep Curls", R.drawable.group_2, "3 x 10-15 reps", "Rest: 60s"),
-                ExerciseItem("Tricep pushdowns (pulley)", "Description for Tricep Pushdowns", R.drawable.group_2, "3 x 10-15 reps", "Rest: 60s"),
-                ExerciseItem("Crunches on mat", "Description for Crunches", R.drawable.group_2, "3 x 15-20 reps", "Rest: 45s")
+                ExerciseItem("Machine or dumbbell chest press", "Description for Chest Press", R.drawable.fu, "3 x 10-12 reps"),
+                ExerciseItem("Lat pulldowns (high pulley)", "Description for Lat Pulldowns", R.drawable.fu, "3 x 10-12 reps"),
+                ExerciseItem("Barbell or dumbbell row (1 arm)", "Description for Row", R.drawable.fu, "3 x 10-12 reps"),
+                ExerciseItem("Dumbbell bicep curls", "Description for Bicep Curls", R.drawable.fu, "3 x 10-15 reps"),
+                ExerciseItem("Tricep pushdowns (pulley)", "Description for Tricep Pushdowns", R.drawable.fu, "3 x 10-15 reps"),
+                ExerciseItem("Crunches on mat", "Description for Crunches", R.drawable.fu, "3 x 15-20 reps")
             )
             getString(R.string.routine_c_title_full) -> listOf(
-                ExerciseItem("Leg press", "Description for Leg Press", R.drawable.group_3, "3 x 10-15 reps", "Rest: 60-90s"),
-                ExerciseItem("Hamstring curl machine", "Description for Hamstring Curl", R.drawable.group_3, "3 x 10-15 reps", "Rest: 60-90s"),
-                ExerciseItem("Walking lunges with dumbbells", "Description for Lunges", R.drawable.group_3, "3 x 10-12 reps/leg", "Rest: 60s"),
-                ExerciseItem("Standing calf raises", "Description for Calf Raises", R.drawable.group_3, "3 x 15-20 reps", "Rest: 45s"),
-                ExerciseItem("Ab machine or mat crunches", "Description for Ab Crunches", R.drawable.group_3, "3 x 15-20 reps", "Rest: 45s"),
-                ExerciseItem("Side plank", "Description for Side Plank", R.drawable.group_3, "3 x 30s/side", "Rest: 30s")
+                ExerciseItem("Leg press", "Description for Leg Press", R.drawable.fu, "3 x 10-15 reps"),
+                ExerciseItem("Hamstring curl machine", "Description for Hamstring Curl", R.drawable.fu, "3 x 10-15 reps"),
+                ExerciseItem("Walking lunges with dumbbells", "Description for Lunges", R.drawable.fu, "3 x 10-12 reps/leg"),
+                ExerciseItem("Standing calf raises", "Description for Calf Raises", R.drawable.fu, "3 x 15-20 reps"),
+                ExerciseItem("Ab machine or mat crunches", "Description for Ab Crunches", R.drawable.fu, "3 x 15-20 reps"),
+                ExerciseItem("Side plank", "Description for Side Plank", R.drawable.fu, "3 x 30s/side")
             )
             else -> emptyList()
         }
@@ -128,19 +125,7 @@ class ExerciseAdapter(private val onItemClicked: (ExerciseItem) -> Unit) :
         fun bind(exercise: ExerciseItem) {
             binding.exerciseNameTextview.text = exercise.name
             binding.exerciseRepsTextview.text = exercise.reps
-
-            val restPrefix = "REST: "
-            val restTextFull = "$restPrefix${exercise.restTime}"
-            val spannable = SpannableString(restTextFull)
-            val context = binding.root.context
-
-            val blueColor = ContextCompat.getColor(context, android.R.color.holo_blue_dark)
-            val grayColor = ContextCompat.getColor(context, android.R.color.darker_gray)
-
-            spannable.setSpan(ForegroundColorSpan(blueColor), 0, restPrefix.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannable.setSpan(ForegroundColorSpan(grayColor), restPrefix.length, restTextFull.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-            binding.exerciseRestTextview.text = spannable
+            binding.exerciseListIcon.setImageResource(exercise.imageResId)
         }
     }
 }

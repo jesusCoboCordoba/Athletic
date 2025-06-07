@@ -40,74 +40,33 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="8dp"
                 android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="#E0E0E0">
+                app:cardBackgroundColor="#A5D6A7">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/image_routine_a"
                         android:text="@string/routine_a_title_full"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:layout_marginBottom="8dp"/>
+                        android:layout_marginEnd="16dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_objective_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_a_objective"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_reps_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_a_reps"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="12dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_exercises_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="4dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_a_exercises_list"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:lineSpacingExtra="4dp"/>
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/image_routine_a"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/group_1"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Routine B: Upper Body -->
@@ -118,74 +77,33 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="8dp"
                 android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="#E0E0E0">
+                app:cardBackgroundColor="#90CAF9">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/image_routine_b"
                         android:text="@string/routine_b_title_full"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:layout_marginBottom="8dp"/>
+                        android:layout_marginEnd="16dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_objective_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_b_objective"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_reps_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_b_reps"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="12dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_exercises_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="4dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_b_exercises_list"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:lineSpacingExtra="4dp"/>
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/image_routine_b"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/group_2"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Routine C: Lower Body + Core -->
@@ -196,74 +114,33 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="8dp"
                 android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="#E0E0E0">
+                app:cardBackgroundColor="#FFB74D">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/image_routine_c"
                         android:text="@string/routine_c_title_full"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:layout_marginBottom="8dp"/>
+                        android:layout_marginEnd="16dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_objective_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_c_objective"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_reps_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_c_reps"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="12dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_exercises_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="4dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/routine_c_exercises_list"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:lineSpacingExtra="4dp"/>
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/image_routine_c"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/group_3"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Additional Recommendations -->

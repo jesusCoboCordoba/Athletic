@@ -28,11 +28,14 @@ class ExerciseDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseDetailName.text = args.exerciseName
-        binding.exerciseDetailDescription.text = args.exerciseDescription
+        // The description is no longer in the new layout, so we remove it.
+        // binding.exerciseDetailDescription.text = args.exerciseDescription 
+        
         if (args.exerciseImageResId != 0) {
             binding.exerciseDetailImage.setImageResource(args.exerciseImageResId)
         }
-        // You would set up tabs and other UI elements here later
+        // The new UI elements like timer, buttons, and progress bar are now in the layout.
+        // The logic to make them interactive (e.g., starting a timer) would be added here.
     }
 
     override fun onDestroyView() {
