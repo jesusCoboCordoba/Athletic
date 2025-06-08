@@ -5,245 +5,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@android:color/white"
     tools:context=".ui.mealplans.MealPlansFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="16dp" 
-        android:paddingEnd="16dp"
-        android:paddingTop="16dp" 
-        android:paddingBottom="16dp"
-        android:background="@android:color/white">
+        android:padding="16dp">
 
-        <LinearLayout
-            android:id="@+id/title_layout"
+        <!-- Title Section -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
+            android:text="YOUR NUTRITION PLAN"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/textViewYour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="Your"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart meals. Strong results"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="24dp"/>
 
-            <TextView
-                android:id="@+id/textViewMealPlansTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="Meal Plans"
-                android:textColor="@color/green_500"
-                android:textSize="28sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <GridLayout
+        <!-- Meal Category Carousel -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_carousel_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3" 
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false">
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_meal_category"
+            android:clipToPadding="false"
+            android:paddingEnd="16dp"
+            tools:itemCount="5"
+            android:layout_marginBottom="24dp"/>
 
-            <!-- Item 1: Breakfast -->
-            <LinearLayout
+        <!-- Daily Meal List -->
+        <TextView
+            android:id="@+id/day_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MONDAY"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/meals_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_meal_plan_entry"
+            tools:itemCount="3"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Summary Cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="8dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                android:layout_marginEnd="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Avg Daily Calories"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2000" android:textSize="18sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/breakfast_card"
-                    android:layout_width="match_parent" 
-                    android:layout_height="120dp"
-                    app:cardBackgroundColor="@color/meal_card_background"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp">
-
-                    <ImageView
-                        android:id="@+id/breakfast_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/breakfast"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/textViewBreakfastLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Breakfast"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!-- Item 2: Coffee Break -->
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="8dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Adherence"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="85%" android:textSize="18sp" android:textStyle="bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/coffee_break_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:cardBackgroundColor="@color/coffee_break_card_background"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp">
-
-                    <ImageView
-                        android:id="@+id/coffee_break_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/fruit_salad_amico"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/textViewCoffeeBreakLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Coffee break"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!-- Item 3: Lunch -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="8dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/lunch_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:cardBackgroundColor="@color/lunch_card_background"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp">
-
-                    <ImageView
-                        android:id="@+id/lunch_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/lunch_time_bro"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/textViewLunchLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Lunch"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!-- Item 4: Dinner -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="8dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/dinner_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:cardBackgroundColor="@color/dinner_card_background"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp">
-
-                    <ImageView
-                        android:id="@+id/dinner_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/fruit_salad_pana"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/textViewDinnerLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Dinner"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!-- Item 5: Snack -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1" 
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="8dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/snack_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:cardBackgroundColor="@color/snack_card_background"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp">
-
-                    <ImageView
-                        android:id="@+id/snack_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/breakfast_food_rafiki"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/textViewSnackLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Snack"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-        </GridLayout>
+        <Button
+            android:id="@+id/view_stats_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Stats"
+            android:backgroundTint="@color/green_500"
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 </ScrollView> 

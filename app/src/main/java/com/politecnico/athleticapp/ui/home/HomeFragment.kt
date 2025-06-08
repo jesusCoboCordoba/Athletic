@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.politecnico.athleticapp.MainActivity
 import com.politecnico.athleticapp.R
 import com.politecnico.athleticapp.databinding.FragmentHomeBinding
@@ -75,7 +76,7 @@ class HomeFragment : Fragment() {
 
         binding.cardCurrentWorkout.setOnClickListener {
             animateCard(it) {
-                Toast.makeText(context, "Current Workout Tapped!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_nav_home_main_to_weeklyChallengeFragment)
             }
         }
 
@@ -94,7 +95,12 @@ class HomeFragment : Fragment() {
         binding.cardWeeklyChallenge.setOnClickListener {
             (activity as? MainActivity)?.showLoading()
             animateCard(it) {
-                findNavController().navigate(R.id.action_nav_home_main_to_weeklyChallengeFragment)
+                val action = HomeFragmentDirections.actionNavHomeMainToRoutineExercisesFragment(
+                    routineName = "Challenge",
+                    routineDay = "Recommended",
+                    routineSubtitle = "Try these exercises!"
+                )
+                findNavController().navigate(action)
             }
         }
 

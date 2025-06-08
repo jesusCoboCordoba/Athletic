@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/start_button"
             android:layout_toEndOf="@id/exercise_list_icon"
             android:orientation="vertical">
 
@@ -51,8 +52,16 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
                 tools:text="3 Sets x 12 Reps" />
-
         </LinearLayout>
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="Start"
+            android:backgroundTint="@color/green_500"/>
 
     </RelativeLayout>
 

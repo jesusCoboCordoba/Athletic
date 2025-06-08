@@ -24,6 +24,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_home_main_to_routineExercisesFragment"
+            app:destination="@id/routineExercisesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -50,13 +57,15 @@
         android:label="@string/menu_meal_plans"
         tools:layout="@layout/fragment_meal_plans">
         <action
-            android:id="@+id/action_nav_meal_plans_to_nav_breakfast_detail"
-            app:destination="@id/nav_breakfast_detail"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_nav_meal_plans_to_nutritionStatsFragment"
+            app:destination="@id/nutritionStatsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nutritionStatsFragment"
+        android:name="com.politecnico.athleticapp.ui.mealplans.NutritionStatsFragment"
+        android:label="Nutrition Stats"
+        tools:layout="@layout/fragment_nutrition_stats" />
 
     <fragment
         android:id="@+id/nav_progress_tracking"
@@ -91,16 +100,19 @@
     </fragment>
 
     <fragment
-        android:id="@+id/routineExercisesFragment" 
+        android:id="@+id/routineExercisesFragment"
         android:name="com.politecnico.athleticapp.ui.weeklychallenge.RoutineExercisesFragment"
         android:label="Routine Exercises"
         tools:layout="@layout/fragment_routine_exercises">
         <argument
-            android:name="routineTitle"
+            android:name="routineName"
             app:argType="string" />
         <argument
-            android:name="imageResId"
-            app:argType="integer" />
+            android:name="routineDay"
+            app:argType="string" />
+        <argument
+            android:name="routineSubtitle"
+            app:argType="string" />
         <action
             android:id="@+id/action_routineExercisesFragment_to_exerciseDetailFragment"
             app:destination="@id/exerciseDetailFragment"
@@ -112,18 +124,12 @@
 
     <fragment
         android:id="@+id/exerciseDetailFragment"
-        android:name="com.politecnico.athleticapp.ui.weeklychallenge.ExerciseDetailFragment" 
+        android:name="com.politecnico.athleticapp.ui.weeklychallenge.ExerciseDetailFragment"
         android:label="Exercise Detail"
-        tools:layout="@layout/fragment_exercise_detail"> 
+        tools:layout="@layout/fragment_exercise_detail">
         <argument
             android:name="exerciseName"
             app:argType="string" />
-        <argument
-            android:name="exerciseDescription"
-            app:argType="string" />
-        <argument
-            android:name="exerciseImageResId"
-            app:argType="integer" />
     </fragment>
 
 </navigation>

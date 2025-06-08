@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
     android:padding="16dp"
     tools:context=".ui.weeklychallenge.RoutineExercisesFragment">
 
     <TextView
+        android:id="@+id/routine_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="WORKOUT PLAN"
@@ -19,6 +19,7 @@
         android:layout_marginBottom="4dp" />
 
     <TextView
+        android:id="@+id/routine_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DAY 1"
@@ -42,5 +43,27 @@
         android:layout_weight="1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_exercise" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress"
+        android:layout_marginTop="16dp"/>
+
+    <ProgressBar
+        android:id="@+id/workout_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="25"
+        android:layout_marginTop="4dp"/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reminder: To warm up before exercising"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/darker_gray"/>
 
 </LinearLayout> 
