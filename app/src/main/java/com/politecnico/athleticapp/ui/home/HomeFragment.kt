@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
 
         binding.cardTrackProgress.setOnClickListener {
             animateCard(it) {
-                Toast.makeText(context, "Track Progress Tapped!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_nav_home_main_to_nav_progress_tracking)
             }
         }
 
