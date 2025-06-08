@@ -25,17 +25,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-<<<<<<< HEAD
-            android:id="@+id/action_nav_home_main_to_routineExercisesFragment"
-            app:destination="@id/routineExercisesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-=======
             android:id="@+id/action_nav_home_main_to_nav_progress_tracking"
             app:destination="@id/nav_progress_tracking" />
->>>>>>> 323dfcad98c8ef870f0da9105a086e27023785e2
     </fragment>
 
     <fragment
@@ -102,6 +93,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_home_main_to_nav_progress_tracking"
+            app:destination="@id/nav_progress_tracking" />
     </fragment>
 
     <fragment
