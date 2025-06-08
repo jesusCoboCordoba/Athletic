@@ -6,12 +6,175 @@
     android:layout_height="match_parent"
     tools:context=".ui.settings.SettingsFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings Fragment"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout> 
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Título de la sección de Ajustes -->
+            <TextView
+                android:id="@+id/settingsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="App Settings"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp" />
+
+            <!-- Sección de Notificaciones -->
+            <TextView
+                android:id="@+id/notificationsLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Notifications"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/notificationsSwitch"
+                app:layout_constraintTop_toBottomOf="@id/settingsTitleTextView"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp" />
+
+            <Switch
+                android:id="@+id/notificationsSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumbTint="#4CAF50"
+                android:trackTint="#A5D6A7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/notificationsLabel"
+                app:layout_constraintBottom_toBottomOf="@id/notificationsLabel"
+                android:layout_marginEnd="8dp" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notificationsSwitch"
+                android:layout_marginTop="16dp" />
+
+            <!-- Sección de Modo Oscuro -->
+            <TextView
+                android:id="@+id/darkModeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Dark Mode"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/darkModeSwitch"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp" />
+
+            <Switch
+                android:id="@+id/darkModeSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumbTint="#424242"
+                android:trackTint="#616161"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/darkModeLabel"
+                app:layout_constraintBottom_toBottomOf="@id/darkModeLabel"
+                android:layout_marginEnd="8dp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/darkModeSwitch"
+                android:layout_marginTop="16dp" />
+
+            <!-- Sección de Unidades de Medida -->
+            <TextView
+                android:id="@+id/unitsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Units"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider2"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp" />
+
+            <RadioGroup
+                android:id="@+id/unitsRadioGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/unitsLabel"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp">
+
+                <RadioButton
+                    android:id="@+id/imperialRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Imperial (lb, in)"
+                    android:textSize="18sp"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/metricRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Metric (kg, cm)"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/unitsRadioGroup"
+                android:layout_marginTop="16dp" />
+
+            <!-- Botón de Cerrar Sesión -->
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="#F44336"
+            app:cornerRadius="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider3"
+            android:layout_marginTop="32dp"
+            android:minHeight="60dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

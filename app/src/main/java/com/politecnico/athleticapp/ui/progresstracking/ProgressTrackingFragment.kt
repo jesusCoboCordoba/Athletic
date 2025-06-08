@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast // Importa la clase Toast para mostrar mensajes
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.politecnico.athleticapp.R
 import com.politecnico.athleticapp.databinding.FragmentProgressTrackingBinding
 
 class ProgressTrackingFragment : Fragment() {
 
-
     private var _binding: FragmentProgressTrackingBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,9 +27,7 @@ class ProgressTrackingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.addPhotoButton.setOnClickListener {
-
             Toast.makeText(context, "Add Photo clicked! (Aquí iría la lógica de cámara/galería)", Toast.LENGTH_SHORT).show()
         }
 
@@ -40,7 +38,6 @@ class ProgressTrackingFragment : Fragment() {
             val measurement2 = binding.measurementEditText2.text.toString()
 
             if (weight.isNotBlank() && measurement1.isNotBlank() && measurement2.isNotBlank()) {
-
                 val message = "Progress Saved:\nWeight: $weight lb\nMeasurement 1: $measurement1 in\nMeasurement 2: $measurement2 in"
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 
@@ -49,11 +46,16 @@ class ProgressTrackingFragment : Fragment() {
             }
         }
 
+        binding.viewGraphButton.setOnClickListener {
+
+            Toast.makeText(context, "Navigating to Graph View!", Toast.LENGTH_SHORT).show()
+
+            findNavController().navigate(R.id.action_nav_progress_tracking_to_nav_progress_detail)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-
         _binding = null
     }
 }

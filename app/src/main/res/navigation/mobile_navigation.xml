@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_nav_home_main_to_nav_progress_tracking"
             app:destination="@id/nav_progress_tracking" />
+        <action
+            android:id="@+id/action_nav_home_main_to_nav_settings"
+            app:destination="@id/nav_settings" />
     </fragment>
 
     <fragment
@@ -67,7 +70,17 @@
         android:id="@+id/nav_progress_tracking"
         android:name="com.politecnico.athleticapp.ui.progresstracking.ProgressTrackingFragment"
         android:label="@string/menu_progress_tracking"
-        tools:layout="@layout/fragment_progress_tracking" />
+        tools:layout="@layout/fragment_progress_tracking">
+        <action
+            android:id="@+id/action_nav_progress_tracking_to_nav_progress_detail"
+            app:destination="@id/nav_progress_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_progress_detail"
+        android:name="com.politecnico.athleticapp.ui.progresstracking.ProgressDetailFragment"
+        android:label="Detalles de Progreso"
+        tools:layout="@layout/fragment_progress_tracking_graphics" />
 
     <fragment
         android:id="@+id/nav_settings"
@@ -93,9 +106,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_nav_home_main_to_nav_progress_tracking"
-            app:destination="@id/nav_progress_tracking" />
     </fragment>
 
     <fragment
