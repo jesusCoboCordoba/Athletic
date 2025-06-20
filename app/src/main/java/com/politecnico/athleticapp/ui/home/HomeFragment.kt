@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
 
         binding.cardJoinCommunity.setOnClickListener {
             animateCard(it) {
-                Toast.makeText(context, "Join Community Tapped!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_nav_home_main_to_communityChatFragment)
             }
         }
 

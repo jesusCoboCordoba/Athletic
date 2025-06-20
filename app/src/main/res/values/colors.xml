@@ -25,4 +25,7 @@
     <color name="lunch_card_background">#E1F5FE</color>
     <color name="dinner_card_background">#F3E5F5</color>
     <color name="snack_card_background">#FFFDE7</color>
+
+    <color name="light_blue">#E3F2FD</color>
+    <color name="red_heart">#E53935</color>
 </resources>
