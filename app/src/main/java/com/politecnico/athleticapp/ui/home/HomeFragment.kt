@@ -81,6 +81,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.cardTrackProgress.setOnClickListener {
+            (activity as? MainActivity)?.showLoading()
             animateCard(it) {
                 findNavController().navigate(R.id.action_nav_home_main_to_nav_progress_tracking)
             }
@@ -95,7 +96,7 @@ class HomeFragment : Fragment() {
         binding.cardWeeklyChallenge.setOnClickListener {
             (activity as? MainActivity)?.showLoading()
             animateCard(it) {
-                findNavController().navigate(R.id.action_nav_home_main_to_nav_progress_tracking)
+                findNavController().navigate(R.id.action_nav_home_main_to_weeklyChallengeFragment)
             }
         }
 

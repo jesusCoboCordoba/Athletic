@@ -38,11 +38,10 @@
             tools:itemCount="3"
             android:layout_marginBottom="24dp"/>
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-            
+            android:layout_height="wrap_content">
+
             <ProgressBar
                 android:id="@+id/workout_progress_ring"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -50,30 +49,37 @@
                 android:layout_height="150dp"
                 android:progress="42"
                 android:progressDrawable="@drawable/circular_progress_bar"
-                android:background="@drawable/circular_progress_background" />
+                android:background="@drawable/circular_progress_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_centerInParent="true"
-                android:gravity="center">
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/workout_progress_ring"
+                app:layout_constraintBottom_toBottomOf="@id/workout_progress_ring"
+                app:layout_constraintStart_toStartOf="@id/workout_progress_ring"
+                app:layout_constraintEnd_toEndOf="@id/workout_progress_ring">
 
                 <TextView
+                    android:id="@+id/progress_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3/7 Workouts"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@color/text_primary"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Keep it up! 💪"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@color/text_secondary"/>
             </LinearLayout>
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 </ScrollView> 

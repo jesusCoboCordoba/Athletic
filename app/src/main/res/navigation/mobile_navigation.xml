@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_nav_home_main_to_communityChatFragment"
             app:destination="@id/communityChatFragment" />
+        <action
+            android:id="@+id/action_nav_home_main_to_nav_workouts"
+            app:destination="@id/nav_workouts" />
     </fragment>
 
     <fragment

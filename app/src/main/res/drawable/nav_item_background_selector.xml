@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Estado cuando el ítem está seleccionado/chequeado -->
-    <item android:drawable="@color/nav_item_pressed_custom_color" android:state_checked="true" />
-    <!-- Estado cuando el ítem está presionado -->
-    <item android:drawable="@color/nav_item_pressed_custom_color" android:state_pressed="true" />
-    <!-- Estado por defecto (transparente o tu color de fondo base del menú) -->
+    <!-- Estado presionado -->
+    <item android:state_pressed="true"
+        android:drawable="@color/nav_item_pressed_background" />
+    <!-- Estado seleccionado -->
+    <item android:state_activated="true"
+        android:drawable="@color/nav_item_selected_background" />
+    <!-- Estado por defecto -->
     <item android:drawable="@android:color/transparent" />
 </selector>

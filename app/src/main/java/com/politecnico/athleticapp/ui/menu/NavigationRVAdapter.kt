@@ -66,12 +66,12 @@ class NavigationRVAdapter(
             icon.setImageResource(item.iconResId)
 
             if (item.isSelected) {
-                container.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.nav_item_pressed_custom_color))
-                title.setTextColor(ContextCompat.getColor(itemView.context, android.R.color.white))
-                icon.setColorFilter(ContextCompat.getColor(itemView.context, android.R.color.white))
-                arrow.setColorFilter(ContextCompat.getColor(itemView.context, android.R.color.white))
+                container.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.nav_item_selected_background))
+                title.setTextColor(ContextCompat.getColor(itemView.context, R.color.nav_item_text_selected))
+                icon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.nav_item_text_selected))
+                arrow.setColorFilter(ContextCompat.getColor(itemView.context, R.color.nav_item_text_selected))
             } else {
-                container.setBackgroundResource(android.R.color.transparent) 
+                container.setBackgroundResource(android.R.color.transparent)
                 title.setTextColor(ContextCompat.getColor(itemView.context, R.color.nav_item_text_default))
                 icon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.nav_item_icon_tint_default))
                 arrow.setColorFilter(ContextCompat.getColor(itemView.context, R.color.nav_item_icon_tint_default))

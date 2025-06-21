@@ -31,19 +31,15 @@
 
         <!-- Card 1: Your current workout -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_current_workout" 
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="#6A5ACD">
+            android:id="@+id/card_current_workout"
+            style="@style/HomeCardView"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/gradient_workout"
                 android:padding="16dp">
 
                 <LinearLayout
@@ -56,220 +52,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
                         android:text="Your current workout"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Continue Routine"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16dp"
-                    android:contentDescription="Workout Image"
-                    android:src="@drawable/group_1" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Card 2: Track your progress -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_track_progress" 
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="#20B2AA">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Track your progress"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Progress"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/group_2"
-                    android:contentDescription="Progress Image"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Card 3: Join the community -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_join_community" 
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="#FF7F50">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Join the community"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Connect, share &amp; compete"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/group_3"
-                    android:contentDescription="Community Image"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Card 4: Meal Plans -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_meal_plans" 
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="#3CB371">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Meal Plans"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Healthy Eating Plans"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/group_4"
-                    android:contentDescription="Meal Plan Image"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Card 5: Challenge of the Week -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_weekly_challenge"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="#FFA500">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Challenge of the Week"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/text_on_gradient"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Join our weekly challenge!"
-                        android:textColor="#FFFFFF"
+                        android:text="Continue Routine"
+                        android:textColor="@color/text_on_gradient"
                         android:textSize="14sp"/>
 
                 </LinearLayout>
@@ -277,14 +69,204 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_fire_24"
+                    android:src="@drawable/group_1"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
-                    android:contentDescription="Challenge image"/>
-
+                    android:contentDescription="Workout image"/>
             </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
+        <!-- Card 2: Track your progress -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_track_progress"
+            style="@style/HomeCardView"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_progress"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Track your progress"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Progress"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/group_2"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="Progress image"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 3: Join the community -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_join_community"
+            style="@style/HomeCardView"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_community"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Join the community"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Connect, share &amp; compete"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/group_3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="Community image"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 4: Meal Plans -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_meal_plans"
+            style="@style/HomeCardView"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_meals"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meal Plans"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Healthy Eating Plans"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/group_4"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="Meal plan image"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 5: Challenge of the Week -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_weekly_challenge"
+            style="@style/HomeCardView"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_community"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Challenge of the Week"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Join our weekly challenge!"
+                        android:textColor="@color/text_on_gradient"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="Challenge image"
+                    android:src="@drawable/ic_fire_24" />
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>

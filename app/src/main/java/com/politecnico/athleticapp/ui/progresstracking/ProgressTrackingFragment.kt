@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.politecnico.athleticapp.MainActivity
 import com.politecnico.athleticapp.R
 import com.politecnico.athleticapp.databinding.FragmentProgressTrackingBinding
 
@@ -26,6 +27,7 @@ class ProgressTrackingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as? MainActivity)?.hideLoading()
 
         binding.addPhotoButton.setOnClickListener {
             Toast.makeText(context, "Add Photo clicked! (Aquí iría la lógica de cámara/galería)", Toast.LENGTH_SHORT).show()

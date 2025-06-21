@@ -93,15 +93,29 @@ class MainActivity : AppCompatActivity() {
         )
 
         navViewAdapter = NavigationRVAdapter(navItems) { selectedNavItem ->
-            if (navController.currentDestination?.id != selectedNavItem.id) {
-                showLoading() // Asegurarse de llamar a showLoading de MainActivity
-                val navOptions = NavOptions.Builder()
-                    .setEnterAnim(R.anim.custom_fade_in)
-                    .setExitAnim(R.anim.custom_fade_out)
-                    .setPopEnterAnim(R.anim.custom_fade_in)
-                    .setPopExitAnim(R.anim.custom_fade_out)
-                    .build()
-                navController.navigate(selectedNavItem.id, null, navOptions)
+            val currentDestinationId = navController.currentDestination?.id
+            if (currentDestinationId != selectedNavItem.id) {
+                showLoading()
+                // Use a when block for explicit navigation actions
+                when (selectedNavItem.id) {
+                    R.id.nav_home_main -> navController.navigate(R.id.nav_home_main) // Or pop to start
+                    R.id.nav_workouts -> {
+                        if (currentDestinationId == R.id.nav_home_main) {
+                            navController.navigate(R.id.action_nav_home_main_to_nav_workouts)
+                        } else {
+                            // You might need to define other actions or pop and navigate
+                            navController.navigate(R.id.nav_workouts)
+                        }
+                    }
+                    R.id.nav_settings -> {
+                        if (currentDestinationId == R.id.nav_home_main) {
+                            navController.navigate(R.id.action_nav_home_main_to_nav_settings)
+                        } else {
+                            navController.navigate(R.id.nav_settings)
+                        }
+                    }
+                    else -> navController.navigate(selectedNavItem.id)
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
         }

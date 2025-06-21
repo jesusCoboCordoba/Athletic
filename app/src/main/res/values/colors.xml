@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <!-- App Theme Colors -->
+    <color name="primary_purple">#5D5FEF</color> <!-- Azul púrpura principal -->
+    <color name="secondary_teal">#2EC4B6</color> <!-- Verde azulado secundario -->
+    <color name="accent_orange">#FF9F1C</color> <!-- Naranja para acentos -->
+    <color name="accent_green">#58B09C</color> <!-- Verde para otros acentos -->
+
+    <!-- Text and Background Colors -->
+    <color name="text_primary">#212121</color> <!-- Texto principal oscuro -->
+    <color name="text_secondary">#757575</color> <!-- Texto secundario gris -->
+    <color name="background_light">#F7F7F7</color> <!-- Fondo principal muy claro -->
     <color name="white">#FFFFFFFF</color>
-    <color name="grey_200">#EEEEEE</color>
+    <color name="black">#FF000000</color>
 
-    <color name="green_200">#A5D6A7</color>
-    <color name="green_500">#4CAF50</color>
+    <!-- Navigation Menu Colors -->
+    <color name="nav_item_selected_background">#E8EAF6</color> <!-- Fondo seleccionado (indigo pálido) -->
+    <color name="nav_item_pressed_background">#F5F5F5</color> <!-- Fondo presionado -->
+    <color name="nav_item_text_selected">@color/primary_purple</color> <!-- Color primario para texto/icono seleccionado -->
+    <color name="nav_item_text_default">@color/text_secondary</color> <!-- Texto por defecto -->
+    <color name="nav_item_icon_tint_default">@color/text_secondary</color> <!-- Icono por defecto -->
 
-    <!-- Colores para el menú de navegación -->
-    <color name="nav_item_selected_background">#FFF0F0</color> <!-- Rosa muy pálido para fondo seleccionado -->
-    <color name="nav_item_pressed_background">#F5F5F5</color>  <!-- Gris muy pálido para fondo presionado/hover -->
-    <color name="nav_item_text_selected">#C62828</color>    <!-- Un rojo oscuro para texto seleccionado -->
-    <color name="nav_item_text_default">#DE000000</color>     <!-- Negro (87% alpha) para texto por defecto -->
-    <color name="nav_item_icon_tint_selected">#C62828</color> <!-- Un rojo oscuro para icono seleccionado -->
-    <color name="nav_item_icon_tint_default">#8A000000</color>  <!-- Negro (54% alpha) para icono por defecto -->
-    <color name="nav_item_pressed_custom_color">#004D53</color> <!-- Nuevo color para hover/pressed -->
+    <!-- Heart Icon -->
+    <color name="red_heart">#E53935</color>
+
+    <!-- Card Backgrounds from Meal Plan (kept for reference if needed) -->
     <color name="meal_card_background">#E8F5E9</color>
     <color name="coffee_break_card_background">#FFF3E0</color>
     <color name="lunch_card_background">#E1F5FE</color>
     <color name="dinner_card_background">#F3E5F5</color>
     <color name="snack_card_background">#FFFDE7</color>
 
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="grey_200">#EEEEEE</color>
+
+    <color name="green_200">#A5D6A7</color>
+    <color name="green_500">#4CAF50</color>
+
     <color name="light_blue">#E3F2FD</color>
-    <color name="red_heart">#E53935</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
+
+    <!-- Gradient Colors for Home Cards (New Palette) -->
+    <color name="gradient_workout_start">#6A82FB</color>
+    <color name="gradient_workout_end">#4C79FF</color>
+    <color name="gradient_progress_start">#3EECD4</color>
+    <color name="gradient_progress_end">#2EC4B6</color>
+    <color name="gradient_community_start">#FFB85A</color>
+    <color name="gradient_community_end">#FF8C66</color>
+    <color name="gradient_meals_start">#30D68B</color>
+    <color name="gradient_meals_end">#2BAF74</color>
+    <color name="text_on_gradient">#FFFFFF</color>
 </resources>
