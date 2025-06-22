@@ -5,4 +5,5 @@ plugins {
     // alias(libs.plugins.android.library) apply false // Commented out this line
     id("androidx.navigation.safeargs.kotlin") version "2.7.7" apply false
     id("com.google.gms.google-services") version "4.4.1" apply false
+
 }

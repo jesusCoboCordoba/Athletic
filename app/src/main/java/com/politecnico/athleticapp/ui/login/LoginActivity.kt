@@ -16,6 +16,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login) // Asegúrate de que este sea el archivo correcto
 
+        // Servicio de recuperacion
+        val recoveryText: TextView = findViewById(R.id.textRecovery)
+        recoveryText.setOnClickListener {
+            val intent = Intent(this, RecoveryActivity::class.java)
+            startActivity(intent)
+        }
+
+
         // Servicio de registro
         val registerText: TextView = findViewById(R.id.textRegister)
         registerText.setOnClickListener {
@@ -32,33 +40,55 @@ class LoginActivity : AppCompatActivity() {
         // Establecemos el comportamiento cuando se presiona el botón de login
 
         loginButton.setOnClickListener {
-            // Aquí iría la lógica de validación de usuario
-            // Obtenemos el texto que el usuario escribió en los campos
             val email = emailEditText.text.toString().trim()
-            val password = passwordEditText.text.toString()
+            val password = passwordEditText.text.toString().trim()
 
-
-            // Validamos que no estén vacíos los campos
             if (email.isEmpty() || password.isEmpty()) {
-                // Mostramos un mensaje si falta algún campo
-                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT)
-                    .show()
-                return@setOnClickListener // Salimos del botón sin continuar
+                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            // Simulamos una autenticación con datos fijos (esto se reemplazaría con conexión a base de datos)
-            if (email == "admin@correo.com" && password == "1234") {
-                // Si los datos son correctos, mostramos mensaje y vamos al MainActivity
-                Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show()
+            val auth = com.google.firebase.auth.FirebaseAuth.getInstance()
 
-                val intent = Intent(this, MainActivity::class.java) // Cambiado a MainActivity
-                startActivity(intent)
-                finish() // Opcional: cierra la actividad de login
-            } else {
-                // Si los datos no coinciden, mostramos error
-                Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
-            }
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Si login fue exitoso, verificamos tipo de usuario
+                        val uid = auth.currentUser?.uid
+                        val dbRef = com.google.firebase.database.FirebaseDatabase.getInstance().getReference("Usuarios")
 
+                        dbRef.child(uid ?: "").get().addOnSuccessListener { snapshot ->
+                            if (snapshot.exists()) {
+                                val tipo = snapshot.child("tipo").getValue(String::class.java)
+
+                                when (tipo) {
+                                    "entrenador" -> {
+                                        Toast.makeText(this, "Bienvenido, entrenador", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this, MainActivity::class.java))
+                                        finish()
+                                    }
+                                    "deportista" -> {
+                                        Toast.makeText(this, "Bienvenido, deportista", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this, MainActivity::class.java))
+                                        finish()
+                                    }
+                                    else -> {
+                                        Toast.makeText(this, "Tipo de usuario desconocido", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(this, "Usuario no encontrado en la base de datos", Toast.LENGTH_SHORT).show()
+                            }
+                        }.addOnFailureListener {
+                            Toast.makeText(this, "Error al acceder a la base de datos", Toast.LENGTH_SHORT).show()
+                        }
+
+                    } else {
+                        Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
+
+
     }
 }
