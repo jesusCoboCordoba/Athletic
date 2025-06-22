@@ -8,13 +8,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.politecnico.athleticapp.R
-import com.politecnico.athleticapp.MainActivity // Asegúrate de que esta línea esté presente
-
+import com.politecnico.athleticapp.MainActivity
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login) // Asegúrate de que este sea el archivo correcto
+        setContentView(R.layout.activity_login)
 
         // Servicio de recuperacion
         val recoveryText: TextView = findViewById(R.id.textRecovery)
