@@ -64,6 +64,13 @@ dependencies {
 
     implementation("io.coil-kt:coil:2.6.0")
     implementation("io.coil-kt:coil-gif:2.6.0")
+    implementation(libs.firebase.storage.ktx)
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.firebase.auth.ktx)
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation("com.google.firebase:firebase-auth-ktx")
 
     implementation ("com.google.firebase:firebase-auth:22.3.1")
     implementation ("com.google.firebase:firebase-database:20.3.1")

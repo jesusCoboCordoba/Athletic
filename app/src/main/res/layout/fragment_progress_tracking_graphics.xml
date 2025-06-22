@@ -20,17 +20,44 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="8dp" />
 
-
     <TextView
-        android:id="@+id/dateLabel"
+        android:id="@+id/selectDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date:"
+        android:text="Selected Date:"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailTitleTextView"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/selectedDateTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Click to select date"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toEndOf="@id/selectDateLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/selectDateLabel"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Recorded:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectedDateTextView"
         android:layout_marginTop="32dp"
         android:layout_marginStart="8dp" />
 
@@ -38,7 +65,7 @@
         android:id="@+id/detailDateTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="2025-06-07"
+        android:text="N/A"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@id/dateLabel"
@@ -64,7 +91,7 @@
         android:id="@+id/detailWeightTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="180 lb"
+        android:text="N/A"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@id/weightDetailLabel"
@@ -90,7 +117,7 @@
         android:id="@+id/detailMeasurement1TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="38 in"
+        android:text="N/A"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@id/measurementsDetailLabel"
@@ -102,7 +129,7 @@
         android:id="@+id/detailMeasurement2TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="34 in"
+        android:text="N/A"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="@id/detailMeasurement1TextView"
@@ -137,4 +164,13 @@
         android:layout_marginTop="8dp"
         tools:src="@tools:sample/avatars" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone" /> </androidx.constraintlayout.widget.ConstraintLayout>
