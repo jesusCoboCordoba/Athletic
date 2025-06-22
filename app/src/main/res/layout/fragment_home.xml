@@ -19,15 +19,17 @@
         android:background="@android:color/white"> 
 
         <TextView
-            android:id="@+id/user_name_greeting"
+            android:id="@+id/userNameGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_regular"
-            android:text="Johanna Doe"
+            android:text="Hello, User"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:layout_marginBottom="24dp"/> 
+            android:layout_marginBottom="24dp"
+            android:singleLine="true"
+            android:ellipsize="end"/> 
 
         <!-- Card 1: Your current workout -->
         <androidx.cardview.widget.CardView

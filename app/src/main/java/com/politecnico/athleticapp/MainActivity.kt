@@ -1,5 +1,6 @@
 package com.politecnico.athleticapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -25,6 +26,8 @@ import com.politecnico.athleticapp.databinding.ActivityMainBinding
 import com.politecnico.athleticapp.ui.menu.NavItem
 import com.politecnico.athleticapp.ui.menu.NavigationRVAdapter
 import androidx.navigation.NavOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.politecnico.athleticapp.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,9 +35,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navViewAdapter: NavigationRVAdapter
     private lateinit var navController: NavController // Hacerlo miembro de la clase
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
+        if (auth.currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            return // Evita que el resto del onCreate se ejecute
+        }
 
         // Modern way to handle edge-to-edge and status bar appearance
         WindowCompat.setDecorFitsSystemWindows(window, false) // Enable edge-to-edge
@@ -85,35 +96,32 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val navItems = listOf(
-            NavItem(R.id.nav_home_main, R.string.menu_home, R.drawable.ic_home_material, true), // Marcar home como seleccionado inicialmente
-            NavItem(R.id.nav_workouts, R.string.menu_workouts, R.drawable.ic_workouts_placeholder), // Reemplaza R.string y R.drawable
+            NavItem(R.id.nav_home_main, R.string.menu_home, R.drawable.ic_home_material, true),
+            NavItem(R.id.nav_workouts, R.string.menu_workouts, R.drawable.ic_workouts_placeholder),
             NavItem(R.id.nav_meal_plans, R.string.menu_meal_plans, R.drawable.ic_meal_plans_placeholder),
             NavItem(R.id.nav_progress_tracking, R.string.menu_progress_tracking, R.drawable.ic_progress_placeholder),
-            NavItem(R.id.nav_settings, R.string.menu_settings, R.drawable.ic_settings_placeholder)
+            NavItem(R.id.nav_settings, R.string.menu_settings, R.drawable.ic_settings_placeholder),
+            NavItem(R.id.nav_logout, R.string.menu_logout, R.drawable.ic_logout_placeholder)
         )
 
         navViewAdapter = NavigationRVAdapter(navItems) { selectedNavItem ->
             val currentDestinationId = navController.currentDestination?.id
             if (currentDestinationId != selectedNavItem.id) {
+                if (selectedNavItem.id == R.id.nav_logout) {
+                    auth.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                    return@NavigationRVAdapter
+                }
+
                 showLoading()
                 // Use a when block for explicit navigation actions
                 when (selectedNavItem.id) {
-                    R.id.nav_home_main -> navController.navigate(R.id.nav_home_main) // Or pop to start
-                    R.id.nav_workouts -> {
-                        if (currentDestinationId == R.id.nav_home_main) {
-                            navController.navigate(R.id.action_nav_home_main_to_nav_workouts)
-                        } else {
-                            // You might need to define other actions or pop and navigate
-                            navController.navigate(R.id.nav_workouts)
-                        }
-                    }
-                    R.id.nav_settings -> {
-                        if (currentDestinationId == R.id.nav_home_main) {
-                            navController.navigate(R.id.action_nav_home_main_to_nav_settings)
-                        } else {
-                            navController.navigate(R.id.nav_settings)
-                        }
-                    }
+                    R.id.nav_home_main -> navController.popBackStack(R.id.nav_home_main, false)
+                    R.id.nav_workouts -> navController.navigate(R.id.nav_workouts)
+                    R.id.nav_settings -> navController.navigate(R.id.nav_settings)
+                    R.id.nav_meal_plans -> navController.navigate(R.id.nav_meal_plans)
+                    R.id.nav_progress_tracking -> navController.navigate(R.id.nav_progress_tracking)
                     else -> navController.navigate(selectedNavItem.id)
                 }
             }

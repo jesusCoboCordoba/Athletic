@@ -19,6 +19,7 @@ import androidx.navigation.fragment.navArgs
 import com.politecnico.athleticapp.MainActivity
 import com.politecnico.athleticapp.R
 import com.politecnico.athleticapp.databinding.FragmentHomeBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class HomeFragment : Fragment() {
     private val zoomedScale = 1.05f
     private val cardAnimationDuration = 150L
     private var initialContentAnimated = false
+    private lateinit var auth: FirebaseAuth
 
     private fun animateCard(card: View, actionToRunAfter: () -> Unit) {
         val scaleXAnimator = ObjectAnimator.ofFloat(card, View.SCALE_X, defaultScale, zoomedScale, defaultScale)
@@ -66,6 +68,11 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+
+        binding.userNameGreeting.text = "Hello, ${currentUser?.email}"
 
         binding.cardMealPlans.setOnClickListener {
             (activity as? MainActivity)?.showLoading()

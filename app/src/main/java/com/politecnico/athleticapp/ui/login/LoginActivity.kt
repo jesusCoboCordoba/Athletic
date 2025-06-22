@@ -2,27 +2,33 @@ package com.politecnico.athleticapp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.politecnico.athleticapp.R
-import com.politecnico.athleticapp.MainActivity // Asegúrate de que esta línea esté presente
+import com.politecnico.athleticapp.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login) // Asegúrate de que este sea el archivo correcto
+        setContentView(R.layout.activity_login)
 
-        // Servicio de recuperacion
+        auth = FirebaseAuth.getInstance()
+
         val recoveryText: TextView = findViewById(R.id.textRecovery)
         recoveryText.setOnClickListener {
-            val intent = Intent(this, RecoveryActivity::class.java)
-            startActivity(intent)
+            // This should navigate to a password recovery activity.
+            // For now, it shows a Toast.
+            Toast.makeText(this, "Password recovery not implemented yet.", Toast.LENGTH_SHORT).show()
         }
-
 
         // Servicio de registro
         val registerText: TextView = findViewById(R.id.textRegister)
@@ -32,63 +38,55 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Obtenemos referencias a los elementos del layout
-
         val emailEditText: EditText = findViewById(R.id.editTextEmail)
         val passwordEditText: EditText = findViewById(R.id.editTextPassword)
         val loginButton: Button = findViewById(R.id.buttonLogin)
 
         // Establecemos el comportamiento cuando se presiona el botón de login
-
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            val auth = com.google.firebase.auth.FirebaseAuth.getInstance()
 
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Si login fue exitoso, verificamos tipo de usuario
                         val uid = auth.currentUser?.uid
-                        val dbRef = com.google.firebase.database.FirebaseDatabase.getInstance().getReference("Usuarios")
+                        val dbRef = FirebaseDatabase.getInstance().getReference("Users")
 
                         dbRef.child(uid ?: "").get().addOnSuccessListener { snapshot ->
                             if (snapshot.exists()) {
-                                val tipo = snapshot.child("tipo").getValue(String::class.java)
+                                val userType = snapshot.child("type").getValue(String::class.java)
 
-                                when (tipo) {
-                                    "entrenador" -> {
-                                        Toast.makeText(this, "Bienvenido, entrenador", Toast.LENGTH_SHORT).show()
+                                when (userType) {
+                                    "coach" -> {
+                                        Toast.makeText(this, "Welcome, Coach!", Toast.LENGTH_SHORT).show()
                                         startActivity(Intent(this, MainActivity::class.java))
                                         finish()
                                     }
-                                    "deportista" -> {
-                                        Toast.makeText(this, "Bienvenido, deportista", Toast.LENGTH_SHORT).show()
+                                    "athlete" -> {
+                                        Toast.makeText(this, "Welcome, Athlete!", Toast.LENGTH_SHORT).show()
                                         startActivity(Intent(this, MainActivity::class.java))
                                         finish()
                                     }
                                     else -> {
-                                        Toast.makeText(this, "Tipo de usuario desconocido", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this, "Unknown user type.", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                             } else {
-                                Toast.makeText(this, "Usuario no encontrado en la base de datos", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "User data not found.", Toast.LENGTH_SHORT).show()
                             }
                         }.addOnFailureListener {
-                            Toast.makeText(this, "Error al acceder a la base de datos", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Failed to access database.", Toast.LENGTH_SHORT).show()
                         }
-
                     } else {
-                        Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Authentication failed. Please check your credentials.", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
-
-
     }
 }
