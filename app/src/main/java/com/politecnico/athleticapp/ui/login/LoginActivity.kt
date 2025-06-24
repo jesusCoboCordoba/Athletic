@@ -25,9 +25,8 @@ class LoginActivity : AppCompatActivity() {
 
         val recoveryText: TextView = findViewById(R.id.textRecovery)
         recoveryText.setOnClickListener {
-            // This should navigate to a password recovery activity.
-            // For now, it shows a Toast.
-            Toast.makeText(this, "Password recovery not implemented yet.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, RecoveryActivity::class.java)
+            startActivity(intent)
         }
 
         // Servicio de registro
@@ -55,10 +54,15 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val uid = auth.currentUser?.uid
+                        val user = auth.currentUser
+                        if (user == null || user.uid.isEmpty()) {
+                            Toast.makeText(this, "Authentication failed: could not get user ID.", Toast.LENGTH_LONG).show()
+                            return@addOnCompleteListener
+                        }
+                        val uid = user.uid
                         val dbRef = FirebaseDatabase.getInstance().getReference("Users")
 
-                        dbRef.child(uid ?: "").get().addOnSuccessListener { snapshot ->
+                        dbRef.child(uid).get().addOnSuccessListener { snapshot ->
                             if (snapshot.exists()) {
                                 val userType = snapshot.child("type").getValue(String::class.java)
 

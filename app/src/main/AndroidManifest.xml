@@ -27,7 +27,7 @@
         android:requestLegacyExternalStorage="true"> <activity
         android:name=".ui.login.LoginActivity"
         android:exported="true"
-        android:label="@string/title_activity">
+        android:theme="@style/Theme.AthleticApp.NoActionBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -41,7 +41,12 @@
             android:theme="@style/Theme.AthleticApp.NoActionBar">
         </activity>
 
-        <activity android:name=".ui.login.RegisterActivity" />
+        <activity
+            android:name=".ui.login.RegisterActivity"
+            android:theme="@style/Theme.AthleticApp.NoActionBar" />
+        <activity
+            android:name=".ui.login.RecoveryActivity"
+            android:theme="@style/Theme.AthleticApp.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

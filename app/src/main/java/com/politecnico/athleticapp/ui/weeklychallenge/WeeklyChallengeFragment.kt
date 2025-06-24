@@ -36,7 +36,6 @@ class WeeklyChallengeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
         (activity as? MainActivity)?.hideLoading()
 
         setupWorkouts()
@@ -94,6 +93,5 @@ class WeeklyChallengeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        (activity as? AppCompatActivity)?.supportActionBar?.show()
     }
 }

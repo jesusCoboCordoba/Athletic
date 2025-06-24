@@ -11,16 +11,16 @@ import com.politecnico.athleticapp.R
 class RecoveryActivity : AppCompatActivity() {
 
     private lateinit var editTextEmail: EditText
-    private lateinit var buttonSend: Button
+    private lateinit var buttonRecover: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recovery)
 
-        editTextEmail = findViewById(R.id.editTextRecoveryEmail)
-        buttonSend = findViewById(R.id.buttonSendRecovery)
+        editTextEmail = findViewById(R.id.editTextEmail)
+        buttonRecover = findViewById(R.id.buttonRecover)
 
-        buttonSend.setOnClickListener {
+        buttonRecover.setOnClickListener {
             val email = editTextEmail.text.toString().trim()
 
             if (email.isEmpty()) {

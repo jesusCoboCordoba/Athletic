@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:contentDescription="@null"
+        android:scaleType="center"
+        android:src="@drawable/home" />
 
     <!-- Contenido del login -->
     <ScrollView
@@ -13,8 +21,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center_horizontal">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="80dp"
+            android:paddingBottom="24dp">
 
             <!-- Logo -->
             <ImageView
@@ -22,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/logo"
                 android:layout_marginBottom="16dp"
+                android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/logo_desc" />
 
             <!-- Título -->
@@ -32,6 +42,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp" />
 
             <!-- Subtítulo -->
@@ -40,36 +51,46 @@
                 android:layout_height="wrap_content"
                 android:text="@string/subtitle_login"
                 android:textSize="14sp"
+                android:layout_gravity="center_horizontal"
                 android:textColor="@android:color/darker_gray"
                 android:layout_marginBottom="24dp" />
 
             <!-- Email -->
-            <EditText
-                android:id="@+id/editTextEmail"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"
-                android:autofillHints="emailAddress"
-                android:backgroundTint="@android:color/darker_gray"
-                android:layout_marginBottom="12dp" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Password -->
-            <EditText
-                android:id="@+id/editTextPassword"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:passwordToggleEnabled="true"
                 android:hint="@string/hint_password"
-                android:inputType="textPassword"
-                android:autofillHints="password"
-                android:backgroundTint="@android:color/darker_gray"
-                android:layout_marginBottom="16dp" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Botón Login -->
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/button_login"
                 android:backgroundTint="#EF5350"
                 android:textColor="@android:color/white"
